@@ -1,0 +1,33 @@
+public class AccountsHelper2110 
+{
+    public static void CreateAccountsRecords ()
+    {
+      Account acc = new Account();
+        
+        acc.Name = 'Ravi Chandra Ashwin';
+        acc.Rating = 'Hot';
+        acc.Industry = 'Cricket Association';
+        acc.AnnualRevenue = 100000;
+        acc.Type = 'Prospect';
+        acc.Ownership = 'Public';
+        
+        insert acc;
+        if(acc.Id != Null)
+        {
+            system.debug('Accounts Records Inserted Successfully   '+ acc.Id);
+            
+            Opportunity oppty = new Opportunity();
+            
+            oppty.Amount = 32000000;
+            oppty.Name = 'Cricketer Opening';
+            oppty.StageName = 'Prospecting';
+            oppty.CloseDate = system.today();
+            
+            oppty.AccountId = acc.Id;
+            insert oppty;
+            
+            if(oppty.Id != Null)
+            system.debug('Opportunity records Created Successfuly   '+ oppty.Id);
+        }
+    }
+}
